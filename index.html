@@ -586,6 +586,12 @@
 
       const drawLottery = () => {
         const { main, bonus } = pickNumbers();
+        if (typeof gtag === "function") {
+          gtag("event", "draw_lottery", {
+            event_category: "engagement",
+            event_label: "추첨하기 버튼",
+          });
+        }
         card.classList.remove("shake");
         void card.offsetWidth;
         card.classList.add("shake");
